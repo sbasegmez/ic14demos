@@ -1,7 +1,7 @@
 IBM Connect 2014 - BP308 Demo Databases
 =======================================
 
-### BP308 The Journey to Becoming a Social Application Developer
+BP308 The Journey to Becoming a Social Application Developer
 
 (C) 2014, Graham Acres ([@gacres99](https://twitter.com/gacres99)) and Serdar Basegmez ([@sbasegmez](https://twitter.com/sbasegmez))
 
