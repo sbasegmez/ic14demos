@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="META-INF/lib/apache-mime4j-0.6.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/com.ibm.commons-9.0.0.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/com.ibm.commons.runtime-1.0.0.20131218-0549.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/com.ibm.commons.xml-9.0.0.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/com.ibm.sbt.core-1.0.0.20131218-0549.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/com.ibm.sbt.samples.commons-1.0.0.20131218-0549.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/httpcore-4.3.jar"/>
+	<classpathentry kind="lib" path="META-INF/lib/httpmime-4.3.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
