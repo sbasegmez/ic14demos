@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C2257C7500548B44" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="20e" sequence="64" unid="795182E5658D42E2C2257C6400591105">
+<created><datetime>20140118T181250,61+02</datetime></created>
+<modified><datetime>20140204T172327,99+02</datetime></modified>
+<revised><datetime>20140204T162700,65+02</datetime></revised>
+<lastaccessed><datetime>20140204T172327,98+02</datetime></lastaccessed>
+<addedtofile><datetime>20140204T172327,98+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Serdar Basegmez/O=developi</name></updatedby>
+<wassignedby><name>CN=Serdar Basegmez/O=developi</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/developi/ic14/xsp/ConnectionsService.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/developi/ic14/xsp/ConnectionsService.java</text></item></note>

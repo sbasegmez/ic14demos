@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.dataContexts>
+		<xp:dataContext var="communityList"
+			value="${ics.communitiesForCombo}">
+		</xp:dataContext>
+	</xp:this.dataContexts>
+	<xc:wLayout>
+		<xc:this.subTitle><![CDATA[Basecamp Project Files]]></xc:this.subTitle>
+		<xp:this.facets>
+			<xp:link escape="true" text="Add File" id="link1"
+				xp:key="actions" styleClass="btn btn-link btn-mini"
+				value="/wAddfile.xsp">
+			</xp:link>
+			<xp:div xp:key="content" id="fileListPane">
+				<xp:messages id="messages1"
+					errorClass="alert alert-error" infoClass="alert alert-info">
+				</xp:messages>
+				<xp:repeat value="#{bcs.projectsCached}"
+					var="project">
+					<xp:div>
+						<xp:text escape="true" id="computedField1"
+							styleClass="text-center text-warning" value="#{project.name}"
+							tagName="h5" style="margin:0px">
+						</xp:text>
+						<xp:repeat id="repeat1" rows="30"
+							value="#{javascript:bcs.getFilesCached(project.id)}"
+							var="file">
+
+							<xp:div
+								style="background:url(#{file.icon}.png) no-repeat left center; padding-left:40px;">
+								<xp:text value="#{file.name}"
+									styleClass="" tagName="h5" style="margin:0px">
+								</xp:text>
+
+								<xe:listInline id="listInline1"
+									style="font-size:11px;">
+									<xp:text escape="true"
+										value="#{file.creatorName}">
+									</xp:text>
+									<xp:text escape="true"
+										value="#{file.createdAtFormatted}">
+									</xp:text>
+									<xp:link escape="true" text="Open"
+										id="link2" value="#{javascript:bcs.getDownloadUrl(file.url)}"
+										target="_blank">
+									</xp:link>
+									<xp:div styleClass="btn-group"
+										id="targetSelection">
+										<xp:link
+											styleClass="btn btn-mini btn-link dropdown-toggle"
+											disableTheme="true" escape="false">
+											<xp:this.attrs>
+												<xp:attr
+													name="data-toggle" value="dropdown">
+												</xp:attr>
+											</xp:this.attrs>
+											<xp:this.text><![CDATA[Copy to...&nbsp;&nbsp;<span class='caret' />]]></xp:this.text>
+										</xp:link>
+
+										<xe:list
+											styleClass="dropdown-menu text-left pull-right"
+											itemStyle="border:0px; display:list-item">
+											<xp:link escape="true"
+												text="My Files" id="link5">
+												<xp:eventHandler
+													event="onclick" submit="true" refreshMode="partial"
+													refreshId="fileListPane">
+													<xp:this.action><![CDATA[#{javascript:ics.uploadBCFile(file, "myFiles")}]]></xp:this.action>
+												</xp:eventHandler>
+											</xp:link>
+											<xp:repeat rows="30"
+												value="#{communityList}" var="cItem">
+												<xp:link escape="true"
+													text="#{javascript:@Left(cItem,'|')}" id="link4">
+													<xp:eventHandler
+														event="onclick" submit="true" refreshMode="partial"
+														refreshId="fileListPane">
+														<xp:this.action><![CDATA[#{javascript:ics.uploadBCFile(file, cItem)}]]></xp:this.action>
+													</xp:eventHandler>
+												</xp:link>
+											</xp:repeat>
+										</xe:list>
+
+									</xp:div>
+								</xe:listInline>
+
+							</xp:div>
+
+							<hr style="margin:5px 0px;" />
+
+
+						</xp:repeat>
+
+						<xp:br />
+					</xp:div>
+				</xp:repeat>
+			</xp:div>
+
+		</xp:this.facets>
+	</xc:wLayout>
+
+</xp:view>

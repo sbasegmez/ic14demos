@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C2257C7500548B44" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="25a" sequence="26" unid="6EFC8B4CDA7A044DC2257C6400735DD0">
+<created><datetime>20140118T230006,56+02</datetime></created>
+<modified><datetime>20140204T172328,37+02</datetime></modified>
+<revised><datetime>20140204T144618,95+02</datetime></revised>
+<lastaccessed><datetime>20140204T172328,36+02</datetime></lastaccessed>
+<addedtofile><datetime>20140204T172328,36+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Serdar Basegmez/O=developi</name></updatedby>
+<wassignedby><name>CN=Serdar Basegmez/O=developi</name></wassignedby>
+<item name="$Flags"><text>345CgQ</text></item>
+<item name="$MimeCharSet" sign="true"><text>UTF-8</text></item>
+<item name="$TITLE" sign="true"><text>basecamp_home.xml</text></item>
+<item name="$PublicAccess"><text>1</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>basecamp_home.xml</text></item></note>

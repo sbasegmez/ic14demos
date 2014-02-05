@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xp:table styleClass="table">
+		<xp:tr>
+			<xp:td>
+				<xp:label value="Service" id="label1"
+					style="font-weight:bold">
+				</xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:label value="Actions" id="label2"
+					style="font-weight:bold">
+				</xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:label value="Status" id="label3"
+					style="font-weight:bold">
+				</xp:label>
+			</xp:td>
+		</xp:tr>
+		<xp:tr>
+			<xp:td style="vertical-align:middle">
+				<xp:label value="BaseCamp" id="label4"
+					style="font-weight:bold; font-size:1.2em;color:rgb(128,0,0)">
+				</xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:button value="Authorize" id="button1"
+					disabled="#{bcs.authenticated}"
+					styleClass="btn btn-small">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="complete">
+						<xp:this.action><![CDATA[#{javascript: bcs.authenticate(true)}]]></xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+				<xp:button value="Revoke Access" id="button2"
+					disabled="#{!bcs.authenticated}"
+					styleClass="btn btn-small">
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action><![CDATA[#{javascript:bcs.logout()}]]></xp:this.action>
+				</xp:eventHandler></xp:button>
+				<xp:button value="More Info" styleClass="btn btn-small"
+					id="button5">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="partial" refreshId="debugPane">
+						<xp:this.action><![CDATA[#{javascript:viewScope.debugFacet="basecamp";}]]></xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</xp:td>
+			<xp:td>
+				<xp:text escape="true" id="computedField1"
+					rendered="#{! bcs.authenticated}"
+					value="Not connected yet..." styleClass="text-warning">
+				</xp:text>
+
+				<xc:bcName rendered="#{bcs.authenticated}"></xc:bcName>
+			</xp:td>
+		</xp:tr>
+		
+		<xp:tr>
+			<xp:td style="vertical-align:middle">
+				<xp:label value="IBM Connections" id="label5"
+					style="font-weight:bold; font-size:1.2em;color:rgb(128,0,0)">
+				</xp:label>
+			</xp:td>
+			<xp:td>
+				<xp:button value="Authorize" id="button3"
+					styleClass="btn btn-small" disabled="true">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="complete">
+						<xp:this.action><![CDATA[#{javascript:ics.authenticate(true)}]]></xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+				<xp:button value="Revoke Access" id="button4"
+					styleClass="btn btn-small" disabled="true">
+				<xp:eventHandler event="onclick" submit="true"
+					refreshMode="complete">
+					<xp:this.action><![CDATA[#{javascript:ics.logout()}]]></xp:this.action>
+				</xp:eventHandler></xp:button>
+				<xp:button value="More Info" styleClass="btn btn-small"
+					id="button6">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="partial" refreshId="debugPane">
+						<xp:this.action><![CDATA[#{javascript:viewScope.debugFacet="connections";}]]></xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</xp:td>
+			<xp:td>
+				<xp:text escape="true" id="computedField2"
+					rendered="#{! ics.authenticated}"
+					value="Not connected yet..." styleClass="text-warning">
+				</xp:text>
+
+				<xc:icName rendered="#{ics.authenticated}"></xc:icName>
+			</xp:td>
+		</xp:tr>
+		
+	</xp:table>
+
+	<xp:div id="debugPane">
+		<xe:switchFacet id="switchFacet1" defaultFacet="blank">
+			<xe:this.selectedFacet><![CDATA[#{javascript:viewScope.debugFacet}]]></xe:this.selectedFacet>
+			<xp:this.facets>
+				<xp:div xp:key="blank"></xp:div>
+				<xe:dumpObject id="dumpObject3" xp:key="basecamp"
+					value="#{bcs.endpoint}"
+					useBeanProperties="true" title="Basecamp Test Service">
+				</xe:dumpObject>
+				<xe:dumpObject id="dumpObject1" xp:key="connections"
+					value="#{ics.endpoint}"
+					useBeanProperties="true" title="Connections Test Service">
+				</xe:dumpObject>
+			</xp:this.facets>
+
+		</xe:switchFacet>
+	</xp:div>
+</xp:view>

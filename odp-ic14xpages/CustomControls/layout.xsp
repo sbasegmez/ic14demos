@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom" xmlns:bx="http://www.openntf.org/xsp/bootstrap">
+
+	
+	<xc:ccDebugToolbar defaultCollapsed="true" collapseTo="left"></xc:ccDebugToolbar>
+	<xe:applicationLayout id="applicationLayout1">
+		<xp:callback facetName="facetMiddle" id="facetMiddle"></xp:callback>
+		<xe:this.facets>
+			<xc:layoutLeft xp:key="LeftColumn"></xc:layoutLeft>
+
+		</xe:this.facets>
+
+		<xe:this.configuration>
+			<bx:bootstrapApplication banner="true" footer="false"
+				legal="false" mastFooter="false" mastHeader="false" placeBar="false"
+				titleBar="false">
+				<bx:this.bannerUtilityLinks>
+					<xe:loginTreeNode label="Login" title="Login"></xe:loginTreeNode>
+
+
+					<xe:basicLeafNode>
+						<xe:this.label><![CDATA[#{javascript:@Name("[CN]", @UserName())}]]></xe:this.label>
+						<xe:this.href><![CDATA[#{javascript:"/names.nsf?logout&redirectto="+facesContext.getExternalContext().getRequestContextPath()}]]></xe:this.href>
+					</xe:basicLeafNode>
+				</bx:this.bannerUtilityLinks>
+			</bx:bootstrapApplication>
+		</xe:this.configuration>
+	</xe:applicationLayout></xp:view>

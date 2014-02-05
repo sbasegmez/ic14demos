@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:repeat id="repeat1" rows="30" value="#{javascript:bcs.getFilesCached(compositeData.pid)}" var="file">
+		
+		<xp:div style="background:url(#{file.icon}.png) no-repeat left center; padding-left:40px;">
+			<xp:text value="#{file.name}" styleClass="" tagName="h5" style="margin:0px"></xp:text>
+		
+			<xe:listInline id="listInline1" style="font-size:11px;">
+				<xp:text escape="true" value="#{file.creatorName}"></xp:text>
+				<xp:text escape="true" value="#{file.createdAtFormatted}"></xp:text>
+				<xp:link escape="true" text="Open in new window" id="link1"
+					value="#{javascript:bcs.getDownloadUrl(file.url)}"
+					target="_blank">
+				</xp:link>
+			</xe:listInline>
+
+		</xp:div>
+			
+		<hr style="margin:5px 0px;" />
+		
+
+	</xp:repeat>
+
+
+</xp:view>

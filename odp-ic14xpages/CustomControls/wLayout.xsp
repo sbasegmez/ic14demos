@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xp_1="http://www.ibm.com/xsp/coreex">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:sessionScope.loginTried=null;}]]></xp:this.beforePageLoad>
+	<xp:div loaded="${!bcs.authenticated}">
+		<xp:div styleClass="text-center">
+			<xp:text escape="true" id="computedField1" tagName="h4"
+				value="You are not connected yet..." styleClass="text-error">
+			</xp:text>
+			<xp:br />
+			<xp:link text="Click here to connect" id="button1"
+				styleClass="btn btn-info">
+				<xp:span styleClass="icon-lock"></xp:span>
+				<xp:eventHandler event="onclick" submit="false">
+					<xp:this.script><![CDATA[window.open("bcLogin.xsp", "_blank", "height=500px,widht=600px,location=no,menubar=no",true)]]></xp:this.script>
+				</xp:eventHandler>
+			</xp:link>
+			<xp:link text="Check again!" id="link1" styleClass="btn btn-link">
+				<xp:eventHandler event="onclick" submit="false">
+					<xp:this.script><![CDATA[location.reload()]]></xp:this.script>
+				</xp:eventHandler>
+			</xp:link>
+		</xp:div>
+	</xp:div>
+
+	<xp:div loaded="${bcs.authenticated}">
+		<xp:div style="position: absolute; z-index: 1000;">
+			<xp:image url="#{bcs.me.avatarUrl}" id="image1" styleClass="img-circle"></xp:image>
+		</xp:div>
+
+		<xp:div style="position: absolute; right:5px">
+			<xp:callback facetName="actions" id="actions"></xp:callback>
+		</xp:div>
+
+
+		<xp:text escape="true" style="padding-left: 70px;padding-top: 5px; margin-bottom:3px"
+			id="computedField2" tagName="h4" value="#{bcs.me.name}">
+		</xp:text>
+		<xp:text escape="false" tagName="small" value="#{compositeData.subTitle}" id="subTitle" 
+					styleClass="text-info" style="margin-left:70px; "/>
+		<hr style="margin-top:0px" />
+
+		<xp:callback facetName="content" id="content"></xp:callback>
+	</xp:div>
+</xp:view>

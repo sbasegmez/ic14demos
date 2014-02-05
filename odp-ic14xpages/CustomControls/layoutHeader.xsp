@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xp:div styleClass="customHeader">
+		<xp:link escape="true" text="Link" id="link1"></xp:link>
+	</xp:div>
+
+
+</xp:view>

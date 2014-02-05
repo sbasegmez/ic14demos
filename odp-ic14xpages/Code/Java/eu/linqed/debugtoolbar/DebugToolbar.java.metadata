@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C2257C7500548B44" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="182" sequence="2" unid="B6A78C0937E7699EC2257C5C00696561">
+<created><datetime>20140110T211112,33+02</datetime></created>
+<modified><datetime>20140204T172327,29+02</datetime></modified>
+<revised><datetime>20140110T211113,12+02</datetime></revised>
+<lastaccessed><datetime>20140204T172327,28+02</datetime></lastaccessed>
+<addedtofile><datetime>20140204T172327,28+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Mark Leusink/O=LinQed</name><name>CN=Mark Leusink/O=CITC</name><name>CN=Mark Leusink/O=LinQed</name><name>CN=Domino Administrator/O=LinQed</name><name>CN=Mark Leusink/O=LinQed</name><name>CN=Mark Leusink/O=SAXDEV</name><name>CN=Mark Leusink/O=LinQed</name><name>CN=Domino Administrator/O=LinQed</name><name>CN=Mark Leusink/O=LinQed</name><name>CN=Serdar Basegmez/O=developi</name></updatedby>
+<wassignedby><name>CN=Serdar Basegmez/O=developi</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>eu/linqed/debugtoolbar/DebugToolbar.java</text></item>
+
+
+
+
+
+
+
+
+
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+
+<item name="$FileNames" sign="true"><text>eu/linqed/debugtoolbar/DebugToolbar.java</text></item></note>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:panel id="panel1" style="display:inline-block;">
+		<xp:image url="#{bcs.me.avatarUrl}" id="image1" styleClass="img-circle"
+			style="height:24px">
+		</xp:image>
+		<xp:text escape="true" style="margin-left:5px; font-size:1.1em;" id="computedField1" value="#{bcs.me.name}"></xp:text>
+		</xp:panel>
+</xp:view>

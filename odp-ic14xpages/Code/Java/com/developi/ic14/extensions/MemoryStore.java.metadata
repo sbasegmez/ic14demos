@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="C2257C7500548B44" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1aa" sequence="17" unid="5EF59DB4CDC6E1E6C2257C5D0082093B">
+<created><datetime>20140112T014020,43+02</datetime></created>
+<modified><datetime>20140204T172327,49+02</datetime></modified>
+<revised><datetime>20140204T153038,20+02</datetime></revised>
+<lastaccessed><datetime>20140204T172327,48+02</datetime></lastaccessed>
+<addedtofile><datetime>20140204T172327,48+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Serdar Basegmez/O=developi</name></updatedby>
+<wassignedby><name>CN=Serdar Basegmez/O=developi</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/developi/ic14/extensions/MemoryStore.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/developi/ic14/extensions/MemoryStore.java</text></item>
+
+</note>

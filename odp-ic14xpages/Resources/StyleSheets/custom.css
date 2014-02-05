@@ -1,0 +1,12 @@
+
+.label-custom {
+margin-left: 8px;
+background-color:#0088cc;
+color: white;
+font-size:11px;
+}
+
+li.active .label-custom {
+background-color:white;
+color: #0088cc
+}

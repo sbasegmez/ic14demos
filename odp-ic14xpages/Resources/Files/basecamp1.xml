@@ -1,0 +1,10 @@
+<iw:iwidget id="com.developi.ic14.widgets.basecamp1" xmlns:iw="http://www.ibm.com/xmlns/prod/iWidget"
+	supportedModes="view" mode="view" lang="en">
+	<iw:content mode="view">
+<![CDATA[
+ <iframe scrolling="auto" width="100%" height="400px" frameborder="0" 
+      src="//main.developi.info/ic14/ic14xpages.nsf/wFiles.xsp">
+ </iframe>
+]]>
+	</iw:content>
+</iw:iwidget>

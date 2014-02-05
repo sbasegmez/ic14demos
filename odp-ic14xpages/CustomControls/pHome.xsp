@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:div styleClass="hero-unit">
+		<h1>BP308 - Demo Time</h1>
+		<p class="text-info">The Journey to Becoming a Social Application Developer
+		</p>
+
+	</xp:div>
+</xp:view>

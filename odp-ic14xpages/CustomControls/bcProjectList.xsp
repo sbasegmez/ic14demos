@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+
+	<xe:widgetContainer id="widgetContainer1"
+		titleBarText="Basecamp Projects" type="plain">
+		<xp:table styleClass="table table-condensed table-bordered">
+			<xp:tr>
+				<xp:td>
+					<xp:label value="Project" id="label1"
+						style="font-weight:bold">
+					</xp:label>
+				</xp:td>
+				<xp:td>
+					<xp:label value="Description" id="label2"
+						style="font-weight:bold">
+					</xp:label>
+				</xp:td>
+			</xp:tr>
+			<xp:repeat id="repeat1" rows="30" var="p"
+				value="${bcs.projects}">
+				<xp:tr>
+					<xp:td>
+						<xp:link text="#{p.name}" id="link1"
+							value="/projectDetail.xsp">
+						<xp:this.parameters>
+							<xp:parameter name="pid" value="#{p.id}"></xp:parameter>
+						</xp:this.parameters></xp:link>
+					</xp:td>
+					<xp:td>
+						<xp:text escape="true" id="computedField1"
+							value="#{p.description}">
+						</xp:text>
+					</xp:td>
+				</xp:tr>
+			</xp:repeat>
+		</xp:table>
+	</xe:widgetContainer>
+
+</xp:view>

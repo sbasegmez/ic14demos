@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+
+	<xp:this.dataContexts>
+		<xp:dataContext var="project"
+			value="#{javascript:bcs.getProjectCached(compositeData.pid)}">
+		</xp:dataContext>
+	</xp:this.dataContexts>
+	<xp:this.beforePageLoad><![CDATA[#{javascript:viewScope.selectedTab="files"}]]></xp:this.beforePageLoad>
+	<xe:djContentPane id="djContentPane1" loadingMessage="Loading...">
+		<xe:widgetContainer id="widgetContainer2"
+			titleBarText="Project: #{project.name}" type="plain">
+			<xp:div id="pContainer">
+				<ul class="nav nav-pills">
+					<li
+						class="#{viewScope.selectedTab=='files'?'active':''}">
+						<xp:link escape="false" id="link1">
+							<xp:this.text><![CDATA[Files <span class='label label-custom'>#{project.attachmentCount}</span>]]></xp:this.text>
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="partial" refreshId="pContainer">
+								<xp:this.action><![CDATA[#{javascript:viewScope.selectedTab="files"}]]></xp:this.action>
+							</xp:eventHandler>
+						</xp:link>
+					</li>
+					<li class="#{viewScope.selectedTab=='discussions'?'active':''}">
+						<xp:link escape="false" id="link2">
+							<xp:this.text><![CDATA[Discussions <span class='label label-custom'>#{project.topicCount}</span>]]></xp:this.text>
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="partial" refreshId="pContainer">
+								<xp:this.action><![CDATA[#{javascript:viewScope.selectedTab="discussions"}]]></xp:this.action>
+							</xp:eventHandler>
+						</xp:link>
+					</li>
+					<li class="#{viewScope.selectedTab=='todolists'?'active':''}">
+						<xp:link escape="false" id="link4">
+							<xp:this.text><![CDATA[To-dos <span class='label label-custom'>#{project.todolistCount}</span>]]></xp:this.text>
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="partial" refreshId="pContainer">
+								<xp:this.action><![CDATA[#{javascript:viewScope.selectedTab="todolists"}]]></xp:this.action>
+							</xp:eventHandler>
+						</xp:link>
+					</li>
+					<li class="#{viewScope.selectedTab=='documents'?'active':''}">
+						<xp:link escape="false" id="link3">
+							<xp:this.text><![CDATA[Text Files <span class='label label-custom'>#{project.documentCount}</span>]]></xp:this.text>
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="partial" refreshId="pContainer">
+								<xp:this.action><![CDATA[#{javascript:viewScope.selectedTab="documents"}]]></xp:this.action>
+							</xp:eventHandler>
+						</xp:link>
+					</li>
+				</ul>
+				<xp:div id="filesPane" rendered="#{viewScope.selectedTab=='files'}">
+					<xc:bcProject_Files pid="#{project.id}"></xc:bcProject_Files>
+				</xp:div>
+
+				<xp:div id="discussionPane" styleClass="well"
+					rendered="#{viewScope.selectedTab=='discussions'}">
+					<h3>Not implemented yet!</h3>
+				</xp:div>
+
+				<xp:div id="todoPane" styleClass="well"
+					rendered="#{viewScope.selectedTab=='todolists'}">
+					<h3>Not implemented yet!</h3>
+				</xp:div>
+
+				<xp:div id="documentPane" styleClass="well"
+					rendered="#{viewScope.selectedTab=='documents'}">
+					<h3>Not implemented yet!</h3>
+				</xp:div>
+
+
+			</xp:div>
+		</xe:widgetContainer>
+	</xe:djContentPane>
+</xp:view>

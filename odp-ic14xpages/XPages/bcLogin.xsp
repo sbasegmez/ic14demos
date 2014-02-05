@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+<!-- This XPage is used to complete the OAUTH dance on a new window. In Connections Widget case, -->
+<!-- it would be a terrible experience to complete the dance on the same window. Especially since -->
+<!-- we are on an iframe in a complicated page! -->
+
+	<xp:this.afterPageLoad><![CDATA[#{javascript:if(bcs.isAuthenticated()) return;
+
+var url=context.getUrl();
+
+// We should be in SSL mode to login... 
+
+if(url.getScheme()=="http") {
+	url.setScheme("https");
+	facesContext.getExternalContext().redirect(url.toString());
+	return;
+}
+
+// bcLoginTried scope var is set on the first authentication attempt, to prevent a possible infinite loop... 
+
+var loginTried=sessionScope.bcLoginTried;
+
+if(loginTried==null) {
+	sessionScope.bcLoginTried="1";
+	bcs.authenticate(true);
+}}]]></xp:this.afterPageLoad>
+	<xp:div styleClass="text-center" loaded="${!bcs.authenticated}">
+
+		<xp:text escape="true" id="computedField1" tagName="h4"
+			value="Unable to login for some reason!" styleClass="text-error">
+		</xp:text>
+
+		<xp:br />
+
+		<xp:link text="Retry" id="link2" styleClass="btn btn-info">
+			<xp:span styleClass="icon-refresh"></xp:span>
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action><![CDATA[#{javascript:sessionScope.bcLoginTried=null;
+bcs.authenticate(true);}]]></xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+
+
+		<xp:link text="Close" id="button1" styleClass="btn btn-info">
+			<xp:span styleClass="icon-off"></xp:span>
+			<xp:eventHandler event="onclick" submit="false">
+				<xp:this.script><![CDATA[window.close();]]></xp:this.script>
+			</xp:eventHandler>
+		</xp:link>
+	</xp:div>
+
+	<xp:div styleClass="text-center" loaded="${bcs.authenticated}">
+
+		<xp:text escape="true" id="computedField2" tagName="h4"
+			value="You are logged in to Basecamp. Please refresh the main page!"
+			styleClass="text-error">
+		</xp:text>
+
+		<xp:br />
+
+		<xp:link text="Close" id="link1" styleClass="btn btn-success">
+			<xp:span styleClass="icon-off"></xp:span>
+			<xp:eventHandler event="onclick" submit="false">
+				<xp:this.script><![CDATA[window.close();]]></xp:this.script>
+			</xp:eventHandler>
+		</xp:link>
+
+<!-- We are hopeful about we can reload the widget frame. But thanks to the same origin policy, if somehow we changed the URL -->
+<!-- we won't be able to do this. URL can be changed in non-SSL to SSL redirection... -->
+
+		<xp:scriptBlock id="scriptBlock1">
+			<xp:this.value><![CDATA[if(window.opener) {
+	window.opener.location.reload(true);
+	window.close();
+}]]></xp:this.value>
+		</xp:scriptBlock>
+
+	</xp:div>
+
+</xp:view>

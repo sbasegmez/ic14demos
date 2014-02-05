@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:repeat id="repeat1" rows="30"
+		value="#{ics.files}" var="file">
+		<xp:div styleClass="media">
+			<xp:span styleClass="pull-left">
+				<xp:image url="#{javascript:ics.getIcon(file.label, file.type)}.png" styleClass="media-object"></xp:image>
+			</xp:span>
+
+			<xp:div styleClass="media-body">
+				<xp:text value="#{file.label}" styleClass="media-heading"
+					tagName="h5"></xp:text>
+
+				<xe:listInline id="listInline1" style="font-size:11px;">
+					<xp:text escape="true" value="#{file.author.name}"></xp:text>
+					<xp:text escape="true" value="#{file.created}">
+						<xp:this.converter>
+							<xp:convertDateTime type="date" dateStyle="short"></xp:convertDateTime>
+						</xp:this.converter>
+					</xp:text>
+					<xp:link escape="true" text="Open in new window" id="link1"
+						value="#{file.contentUrl}" target="_blank">
+					</xp:link>
+				</xe:listInline>
+
+			</xp:div>
+
+		</xp:div>
+		<hr />
+
+
+	</xp:repeat>
+
+
+
+
+</xp:view>

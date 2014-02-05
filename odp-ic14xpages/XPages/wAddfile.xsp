@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:this.resources>
+		<xp:script src="/wUtils.jss" clientSide="false"></xp:script>
+	</xp:this.resources>
+	<xc:wLayout subTitle="Transfer Files to Basecamp Projects">
+		<xp:this.facets>
+			<xp:link escape="true" text="Back" id="link2"
+				xp:key="actions" value="/wFiles.xsp"
+				styleClass="btn btn-link btn-mini">
+			</xp:link>
+			<xp:div xp:key="content" styleClass="text-center"
+				id="addFilePane">
+
+				<xp:div styleClass="btn-group" id="modeSelection">
+					<xp:link styleClass="btn btn-mini dropdown-toggle"
+						disableTheme="true" escape="false">
+						<xp:this.attrs>
+							<xp:attr name="data-toggle"
+								value="dropdown">
+							</xp:attr>
+						</xp:this.attrs>
+						<xp:this.text><![CDATA[#{javascript:getUploadModeTitle()}&nbsp;&nbsp;<span class='caret' />]]></xp:this.text>
+					</xp:link>
+
+					<xe:list styleClass="dropdown-menu text-left">
+						<xp:repeat rows="30"
+							value="#{javascript:getUploadModes()}" var="sItem">
+							<xp:link escape="true"
+								text="#{javascript:@Left(sItem,'|')}" id="link1">
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="partial" refreshId="addFilePane">
+									<xp:this.action><![CDATA[#{javascript:viewScope.uploadMode=sItem}]]></xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
+						</xp:repeat>
+						<xp:repeat rows="30"
+							value="#{ics.communitiesForCombo}" var="cItem">
+							<xp:link escape="true"
+								text="#{javascript:@Left(cItem,'|')}" id="link4">
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="partial" refreshId="addFilePane">
+									<xp:this.action><![CDATA[#{javascript:viewScope.uploadMode=cItem}]]></xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
+						</xp:repeat>
+					</xe:list>
+
+				</xp:div>
+
+
+				<xp:div styleClass="btn-group" id="projectSelection">
+
+					<xp:link styleClass="btn btn-mini dropdown-toggle"
+						disableTheme="true" escape="false">
+						<xp:this.attrs>
+							<xp:attr name="data-toggle"
+								value="dropdown">
+							</xp:attr>
+						</xp:this.attrs>
+						<xp:this.text><![CDATA[#{javascript:getSelectedProjectTitle()}&nbsp;&nbsp;<span class='caret' />]]></xp:this.text>
+					</xp:link>
+
+					<xe:list styleClass="dropdown-menu text-left">
+
+						<xp:repeat rows="30"
+							value="#{bcs.projectsForCombo}" var="pItem">
+							<xp:link escape="true"
+								text="#{javascript:@Left(pItem,'|')}" id="link3">
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="partial"
+									refreshId="projectSelection">
+									<xp:this.action><![CDATA[#{javascript:viewScope.selectedProject=pItem}]]></xp:this.action>
+								</xp:eventHandler>
+							</xp:link>
+						</xp:repeat>
+					</xe:list>
+
+				</xp:div>
+
+
+				<xe:switchFacet id="switchFacet1" defaultFacet="local"
+					selectedFacet="#{javascript:getFileListMode()}">
+					<xp:this.facets>
+						<xp:div xp:key="local"
+							styleClass="text-center">
+							<xp:messages id="messages1"></xp:messages>
+							<hr />
+							<xp:fileUpload id="fileUpload1">
+							</xp:fileUpload>
+							<hr />
+							<xp:button id="button1"
+								value="Upload Local File">
+								<xp:eventHandler event="onclick"
+									submit="true" refreshMode="complete">
+									<xp:this.action>
+										<xp:executeScript
+											script="#{bcs.uploadLocalFile}">
+										</xp:executeScript>
+									</xp:this.action>
+								</xp:eventHandler>
+							</xp:button>
+						</xp:div>
+						<xp:div xp:key="connections"
+							styleClass="text-left">
+							<xp:br />
+							<xp:messages id="messages2"></xp:messages>
+							<hr />
+							<xp:repeat id="repeat1" rows="30"
+								value="#{javascript:getFileList()}" var="file">
+
+								<xp:span
+									style="position:absolute; right:5px">
+									<xp:link text="Select"
+										styleClass="btn btn-mini btn-link" id="link5">
+										<xp:eventHandler event="onclick"
+											submit="true" refreshMode="complete">
+											<xp:this.action><![CDATA[#{javascript:bcs.uploadConnectionsFile(file)}]]></xp:this.action>
+										</xp:eventHandler>
+									</xp:link>
+								</xp:span>
+								<xp:div
+									style="background:url(#{javascript:ics.getIcon(file.label, file.type)}.png) no-repeat left center; padding-left:40px; padding-right:40px">
+
+									<xp:text value="#{file.label}"
+										style="margin:0px" tagName="h5">
+									</xp:text>
+
+									<xe:listInline id="listInline2"
+										style="font-size:11px;">
+										<xp:text escape="true"
+											value="#{file.author.name}">
+										</xp:text>
+										<xp:text escape="true"
+											value="#{file.created}">
+											<xp:this.converter>
+												<xp:convertDateTime
+													type="date" dateStyle="short">
+												</xp:convertDateTime>
+											</xp:this.converter>
+										</xp:text>
+									</xe:listInline>
+
+								</xp:div>
+
+								<hr style="margin:5px 0px;" />
+
+							</xp:repeat>
+
+
+						</xp:div>
+					</xp:this.facets>
+
+
+				</xe:switchFacet>
+
+
+
+			</xp:div>
+		</xp:this.facets>
+	</xc:wLayout>
+
+</xp:view>
